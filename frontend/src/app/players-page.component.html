@@ -1,0 +1,19 @@
+<div class="players-page">
+  <h2>Football Players</h2>
+  <input [(ngModel)]="groupId" placeholder="Enter Group ID" />
+  <button (click)="loadPlayers()">Load Players</button>
+
+  @if (players$ | async; as players) {
+    @if (players && players.length > 0) {
+      <ul>
+        @for (player of players; track player.id || $index) {
+          <li>{{ player.name || player }}</li>
+        }
+      </ul>
+    } @else {
+      <div>No players found. </div>
+    }
+  } @else {
+    <div>No data loaded yet.</div>
+  }
+</div>

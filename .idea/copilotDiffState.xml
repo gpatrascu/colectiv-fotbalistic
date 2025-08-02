@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CopilotDiffPersistence">
+    <option name="pendingDiffs">
+      <map>
+        <entry key="$PROJECT_DIR$/api/GetPlayers.cs">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/api/GetPlayers.cs" />
+              <option name="updatedContent" value="using System.Collections.Generic;&#10;using Microsoft.Azure.Functions.Worker;&#10;using Microsoft.Azure.Functions.Worker.Http;&#10;using System.Net;&#10;using System.Text.Json;&#10;&#10;namespace GetPlayersFunction&#10;{&#10;    public class Player&#10;    {&#10;        public int Id { get; set; }&#10;        public string Name { get; set; }&#10;        public string Position { get; set; }&#10;    }&#10;&#10;    public class GetPlayers&#10;    {&#10;        [Function(&quot;GetPlayers&quot;)]&#10;        public HttpResponseData Run([HttpTrigger(AuthorizationLevel.Anonymous, &quot;get&quot;, Route = &quot;getPlayers&quot;)] HttpRequestData req)&#10;        {&#10;            var players = new List&lt;Player&gt;&#10;            {&#10;                new Player { Id = 1, Name = &quot;Lionel Messi&quot;, Position = &quot;Forward&quot; },&#10;                new Player { Id = 2, Name = &quot;Cristiano Ronaldo&quot;, Position = &quot;Forward&quot; },&#10;                new Player { Id = 3, Name = &quot;Kevin De Bruyne&quot;, Position = &quot;Midfielder&quot; },&#10;                new Player { Id = 4, Name = &quot;Virgil van Dijk&quot;, Position = &quot;Defender&quot; },&#10;                new Player { Id = 5, Name = &quot;Alisson Becker&quot;, Position = &quot;Goalkeeper&quot; }&#10;            };&#10;&#10;            var response = req.CreateResponse(HttpStatusCode.OK);&#10;            response.Headers.Add(&quot;Content-Type&quot;, &quot;application/json&quot;);&#10;            response.WriteString(JsonSerializer.Serialize(players));&#10;            return response;&#10;        }&#10;    }&#10;}&#10;" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/api/Program.cs">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/api/Program.cs" />
+              <option name="updatedContent" value="using Microsoft.Azure.Functions.Worker.Extensions.OpenApi.Extensions;&#10;using Microsoft.Azure.Functions.Worker;&#10;using Microsoft.Extensions.Hosting;&#10;&#10;var host = new HostBuilder()&#10;    .ConfigureFunctionsWorkerDefaults()&#10;    .Build();&#10;&#10;host.Run();&#10;" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/api/api.csproj">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/api/api.csproj" />
+              <option name="originalContent" value="&lt;Project Sdk=&quot;Microsoft.NET.Sdk&quot;&gt;&#10;&#10;  &lt;PropertyGroup&gt;&#10;    &lt;TargetFramework&gt;net8.0&lt;/TargetFramework&gt;&#10;    &lt;OutputType&gt;Exe&lt;/OutputType&gt;&#10;    &lt;AzureFunctionsVersion&gt;v4&lt;/AzureFunctionsVersion&gt;&#10;    &lt;AssemblyName&gt;api&lt;/AssemblyName&gt;&#10;    &lt;RootNamespace&gt;api&lt;/RootNamespace&gt;&#10;  &lt;/PropertyGroup&gt;&#10;&#10;  &lt;ItemGroup&gt;&#10;    &lt;PackageReference Include=&quot;Microsoft.Azure.Functions.Worker&quot; Version=&quot;1.18.0&quot; /&gt;&#10;    &lt;PackageReference Include=&quot;Microsoft.Azure.Functions.Worker.Extensions.OpenApi&quot; Version=&quot;2.0.0-preview1&quot; /&gt;&#10;    &lt;PackageReference Include=&quot;Microsoft.Azure.Functions.Worker.Sdk&quot; Version=&quot;1.18.0&quot; OutputItemType=&quot;Analyzer&quot; /&gt;&#10;  &lt;/ItemGroup&gt;&#10;&#10;  &lt;PropertyGroup&gt;&#10;    &lt;RestoreSources&gt;https://api.nuget.org/v3/index.json&lt;/RestoreSources&gt;&#10;  &lt;/PropertyGroup&gt;&#10;&#10;&lt;/Project&gt;&#10;" />
+              <option name="updatedContent" value="&lt;Project Sdk=&quot;Microsoft.NET.Sdk&quot;&gt;&#10;&#10;  &lt;PropertyGroup&gt;&#10;    &lt;TargetFramework&gt;net8.0&lt;/TargetFramework&gt;&#10;    &lt;OutputType&gt;Exe&lt;/OutputType&gt;&#10;    &lt;AzureFunctionsVersion&gt;v4&lt;/AzureFunctionsVersion&gt;&#10;    &lt;AssemblyName&gt;api&lt;/AssemblyName&gt;&#10;    &lt;RootNamespace&gt;api&lt;/RootNamespace&gt;&#10;  &lt;/PropertyGroup&gt;&#10;&#10;  &lt;ItemGroup&gt;&#10;    &lt;PackageReference Include=&quot;Microsoft.Azure.Functions.Worker&quot; Version=&quot;1.18.0&quot; /&gt;&#10;    &lt;PackageReference Include=&quot;Microsoft.Azure.Functions.Worker.Sdk&quot; Version=&quot;1.18.0&quot; OutputItemType=&quot;Analyzer&quot; /&gt;&#10;  &lt;/ItemGroup&gt;&#10;&#10;  &lt;PropertyGroup&gt;&#10;    &lt;RestoreSources&gt;https://api.nuget.org/v3/index.json&lt;/RestoreSources&gt;&#10;  &lt;/PropertyGroup&gt;&#10;&#10;&lt;/Project&gt;" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/api/colectiv-fotbalistic.api.csproj">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/api/colectiv-fotbalistic.api.csproj" />
+              <option name="originalContent" value="&lt;Project Sdk=&quot;Microsoft.NET.Sdk&quot;&gt;&#10;&#10;  &lt;PropertyGroup&gt;&#10;    &lt;TargetFramework&gt;net8.0&lt;/TargetFramework&gt;&#10;    &lt;OutputType&gt;Exe&lt;/OutputType&gt;&#10;    &lt;AzureFunctionsVersion&gt;v4&lt;/AzureFunctionsVersion&gt;&#10;  &lt;/PropertyGroup&gt;&#10;&#10;  &lt;ItemGroup&gt;&#10;    &lt;PackageReference Include=&quot;Microsoft.Azure.Functions.Worker&quot; Version=&quot;1.16.0&quot; /&gt;&#10;    &lt;PackageReference Include=&quot;Microsoft.Azure.Functions.Worker.Sdk&quot; Version=&quot;1.16.0&quot; OutputItemType=&quot;Analyzer&quot; /&gt;&#10;    &lt;PackageReference Include=&quot;Microsoft.Azure.Functions.Worker.Extensions.OpenApi&quot; Version=&quot;2.0.0-preview1&quot; /&gt;&#10;  &lt;/ItemGroup&gt;&#10;&#10;  &lt;PropertyGroup&gt;&#10;    &lt;RestoreSources&gt;https://api.nuget.org/v3/index.json&lt;/RestoreSources&gt;&#10;  &lt;/PropertyGroup&gt;&#10;&#10;&lt;/Project&gt;&#10;" />
+              <option name="updatedContent" value="&lt;Project Sdk=&quot;Microsoft.NET.Sdk&quot;&gt;&#10;&#10;  &lt;PropertyGroup&gt;&#10;    &lt;TargetFramework&gt;net8.0&lt;/TargetFramework&gt;&#10;    &lt;OutputType&gt;Exe&lt;/OutputType&gt;&#10;    &lt;AzureFunctionsVersion&gt;v4&lt;/AzureFunctionsVersion&gt;&#10;    &lt;AssemblyName&gt;api&lt;/AssemblyName&gt;&#10;    &lt;RootNamespace&gt;api&lt;/RootNamespace&gt;&#10;  &lt;/PropertyGroup&gt;&#10;&#10;  &lt;ItemGroup&gt;&#10;    &lt;PackageReference Include=&quot;Microsoft.Azure.Functions.Worker&quot; Version=&quot;1.16.0&quot; /&gt;&#10;    &lt;PackageReference Include=&quot;Microsoft.Azure.Functions.Worker.Sdk&quot; Version=&quot;1.16.0&quot; OutputItemType=&quot;Analyzer&quot; /&gt;&#10;    &lt;PackageReference Include=&quot;Microsoft.Azure.Functions.Worker.Extensions.OpenApi&quot; Version=&quot;2.0.0-preview1&quot; /&gt;&#10;  &lt;/ItemGroup&gt;&#10;&#10;  &lt;PropertyGroup&gt;&#10;    &lt;RestoreSources&gt;https://api.nuget.org/v3/index.json&lt;/RestoreSources&gt;&#10;  &lt;/PropertyGroup&gt;&#10;&#10;&lt;/Project&gt;" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/api/getPlayers/index.js">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/api/getPlayers/index.js" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/api/host.json">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/api/host.json" />
+              <option name="updatedContent" value="{&#10;  &quot;version&quot;: &quot;2.0&quot;&#10;}&#10;" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/api/local.settings.json">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/api/local.settings.json" />
+              <option name="originalContent" value="{&#10;  &quot;IsEncrypted&quot;: false,&#10;  &quot;Values&quot;: {&#10;    &quot;AzureWebJobsStorage&quot;: &quot;UseDevelopmentStorage=true&quot;,&#10;    &quot;FUNCTIONS_WORKER_RUNTIME&quot;: &quot;dotnet&quot;&#10;  }&#10;}&#10;&#10;" />
+              <option name="updatedContent" value="{&#10;  &quot;IsEncrypted&quot;: false,&#10;  &quot;Values&quot;: {&#10;    &quot;AzureWebJobsStorage&quot;: &quot;UseDevelopmentStorage=true&quot;,&#10;    &quot;FUNCTIONS_WORKER_RUNTIME&quot;: &quot;dotnet&quot;,&#10;    &quot;FUNCTIONS_INPROC_NET8_ENABLED&quot;: &quot;1&quot;&#10;  }&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
