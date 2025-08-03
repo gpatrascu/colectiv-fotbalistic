@@ -3,10 +3,11 @@
   "configurations": {
     "colectiv-fotbalistic": {
       "appLocation": "frontend",
-      "outputLocation": "frontend/dist/frontend",
+      "outputLocation": "frontend/dist/frontend/browser",
       "appBuildCommand": "npm run build",
       "run": "npm start",
-      "appDevserverUrl": "http://localhost:4200"
+      "appDevserverUrl": "http://localhost:4200",
+      "appName": "colectiv-fotbalistic"
     }
   }
 }
