@@ -33,6 +33,7 @@ jobs:
           api_location: "api"
           output_location: "dist/frontend"
           app_build_command: "npm run build"
+          app_node_version: '20.19.0'
           skip_app_build: false
           skip_deploy_on_missing_secrets: true
 
