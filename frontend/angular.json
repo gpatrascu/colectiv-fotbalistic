@@ -37,7 +37,7 @@
             "styles": [
               "src/styles.scss"
             ],
-            "outputPath": "dist/frontend/browser",
+            "outputPath": "dist/frontend",
             "index": "src/index.html"
           },
           "configurations": {
