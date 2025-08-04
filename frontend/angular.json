@@ -36,7 +36,9 @@
             ],
             "styles": [
               "src/styles.scss"
-            ]
+            ],
+            "outputPath": "dist/frontend/browser",
+            "index": "src/index.html"
           },
           "configurations": {
             "production": {
