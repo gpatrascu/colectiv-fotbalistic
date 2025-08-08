@@ -36,11 +36,13 @@ export class AuthService {
   }
 
   loginWithFacebook(): void {
-    window.location.href = '/.auth/login/facebook';
+    // Use document.location to force a full page redirect
+    document.location.href = '/.auth/login/facebook';
   }
 
   logout(): void {
-    window.location.href = '/.auth/logout';
+    // Use document.location to force a full page redirect
+    document.location.href = '/.auth/logout';
   }
 
   isLoggedIn(): boolean {
