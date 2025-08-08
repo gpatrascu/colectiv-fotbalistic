@@ -1,0 +1,139 @@
+.data-deletion-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  h1 {
+    color: var(--gray-900, #2d3748);
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .content {
+    line-height: 1.6;
+
+    section {
+      margin-bottom: 2rem;
+
+      h2 {
+        color: var(--gray-700, #4a5568);
+        font-size: 1.5rem;
+        font-weight: 500;
+        margin-bottom: 1rem;
+        border-bottom: 2px solid var(--gray-400, #cbd5e0);
+        padding-bottom: 0.5rem;
+      }
+
+      p {
+        color: var(--gray-700, #4a5568);
+        margin-bottom: 1rem;
+        font-size: 1rem;
+      }
+
+      ul {
+        color: var(--gray-700, #4a5568);
+        margin-left: 1.5rem;
+        margin-bottom: 1rem;
+
+        li {
+          margin-bottom: 0.5rem;
+        }
+      }
+    }
+  }
+
+  .warning-section {
+    .warning-box {
+      background: #fef2f2;
+      border: 2px solid #fca5a5;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+
+      h2 {
+        color: #dc2626;
+        border: none;
+        margin-bottom: 0.5rem;
+        font-size: 1.25rem;
+      }
+
+      p {
+        color: #991b1b;
+        margin: 0;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .deletion-form {
+    background: #f9fafb;
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+
+    .form-actions {
+      margin-top: 2rem;
+
+      .delete-button {
+        background: #dc2626;
+        color: white;
+        border: none;
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-bottom: 1rem;
+
+        &:hover {
+          background: #b91c1c;
+        }
+
+        &:active {
+          background: #991b1b;
+        }
+      }
+
+      .contact-info {
+        font-size: 0.9rem;
+        color: var(--gray-700, #4a5568);
+
+        a {
+          color: var(--bright-blue, #3b82f6);
+          text-decoration: none;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .data-deletion-container {
+    padding: 1rem;
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    .content section h2 {
+      font-size: 1.25rem;
+    }
+
+    .deletion-form {
+      padding: 1rem;
+
+      .form-actions .delete-button {
+        width: 100%;
+        padding: 1rem;
+      }
+    }
+  }
+}
