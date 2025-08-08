@@ -1,12 +1,23 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet, RouterLink } from '@angular/router';
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { NavbarComponent } from './navbar.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink],
-  templateUrl: './app.html',
-  styleUrl: './app.scss'
+  imports: [RouterOutlet, NavbarComponent],
+  template: `
+    <app-navbar></app-navbar>
+    <main class="main-content">
+      <router-outlet></router-outlet>
+    </main>
+  `,
+  styles: [`
+    .main-content {
+      min-height: calc(100vh - 60px);
+      background: #f5f5f5;
+    }
+  `]
 })
 export class App {
-  protected readonly title = signal('frontend');
+  title = 'frontend';
 }
