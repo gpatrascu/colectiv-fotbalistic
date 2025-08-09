@@ -20,7 +20,17 @@ import { AuthService } from './auth.service';
           <a routerLink="/data-deletion" routerLinkActive="active">Data Deletion</a>
 
           <div *ngIf="authService.isLoggedIn()" class="user-section">
-            <span class="user-name">{{ authService.getUserName() }}</span>
+            <div class="user-info">
+              <div class="user-avatar">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </div>
+              <div class="user-details">
+                <span class="user-name">{{ authService.getUserName() }}</span>
+                <span class="user-provider">via {{ getProviderName() }}</span>
+              </div>
+            </div>
             <button class="logout-btn" (click)="logout()">Logout</button>
           </div>
 
@@ -85,9 +95,43 @@ import { AuthService } from './auth.service';
       gap: 12px;
     }
 
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #f0f2f5;
+      padding: 6px 12px;
+      border-radius: 20px;
+      border: 1px solid #ddd;
+    }
+
+    .user-avatar {
+      width: 32px;
+      height: 32px;
+      background: #1877f2;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+
+    .user-details {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+
     .user-name {
       color: #1c1e21;
-      font-weight: 500;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .user-provider {
+      color: #65676b;
+      font-size: 12px;
+      font-weight: 400;
     }
 
     .logout-btn {
@@ -125,6 +169,10 @@ import { AuthService } from './auth.service';
         flex-wrap: wrap;
         justify-content: center;
       }
+
+      .user-details {
+        display: none;
+      }
     }
   `]
 })
@@ -133,5 +181,13 @@ export class NavbarComponent {
 
   logout(): void {
     this.authService.logout();
+  }
+
+  getProviderName(): string {
+    const user = this.authService.getUser();
+    if (user?.identityProvider) {
+      return user.identityProvider.charAt(0).toUpperCase() + user.identityProvider.slice(1);
+    }
+    return 'Unknown';
   }
 }

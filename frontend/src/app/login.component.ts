@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
+import { MockAuthService } from './mock-auth.service';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -12,6 +14,9 @@ import { AuthService } from './auth.service';
       <div class="login-card">
         <h1>Welcome to Colectiv Fotbalistic</h1>
         <p>Please sign in with Facebook to continue</p>
+        <p *ngIf="isLocalMode" class="mock-notice">
+          🚧 Local Development Mode - Using Mock Authentication
+        </p>
 
         <button class="facebook-btn" (click)="loginWithFacebook()">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -73,16 +78,33 @@ import { AuthService } from './auth.service';
     .facebook-btn:hover {
       background: #166fe5;
     }
+
+    .mock-notice {
+      background: #fff3cd;
+      color: #856404;
+      padding: 8px 12px;
+      border-radius: 4px;
+      font-size: 14px;
+      margin: 16px 0;
+      border: 1px solid #ffeaa7;
+    }
   `]
 })
 export class LoginComponent implements OnInit {
+  isLocalMode = environment.useMockAuth;
+  private authService: AuthService | MockAuthService;
+
   constructor(
-    private authService: AuthService,
+    private realAuthService: AuthService,
+    private mockAuthService: MockAuthService,
     private router: Router
-  ) {}
+  ) {
+    // Use mock service for local development, real service for production
+    this.authService = this.isLocalMode ? this.mockAuthService : this.realAuthService;
+  }
 
   ngOnInit(): void {
-    // If user is already logged in, redirect to players page
+    // Subscribe to user changes from the appropriate service
     this.authService.user$.subscribe(user => {
       if (user) {
         this.router.navigate(['/players']);

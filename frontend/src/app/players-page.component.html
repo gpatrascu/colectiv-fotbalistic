@@ -1,19 +1,35 @@
 <div class="players-page">
-  <h2>Football Players</h2>
-  <input [(ngModel)]="groupId" placeholder="Enter Group ID" />
-  <button (click)="loadPlayers()">Load Players</button>
+  <!-- Welcome Section with User Info -->
+  <div class="welcome-section">
+    <div class="welcome-header">
+      <h2>Welcome to Football Players, {{ authService.getUserName() }}!</h2>
+      <div class="user-badge">
+        <span class="provider-badge">Logged in via {{ getUserProvider() }}</span>
+        <span class="user-id">User ID: {{ getUserId() }}</span>
+      </div>
+    </div>
+  </div>
 
-  @if (players$ | async; as players) {
-    @if (players && players.length > 0) {
-      <ul>
-        @for (player of players; track player.id || $index) {
-          <li>{{ player.name || player }}</li>
-        }
-      </ul>
+  <!-- Players Section -->
+  <div class="players-section">
+    <h3>Search Players</h3>
+    <div class="search-controls">
+      <input [(ngModel)]="groupId" placeholder="Enter Group ID" class="group-input" />
+      <button (click)="loadPlayers()" class="load-btn">Load Players</button>
+    </div>
+
+    @if (players$ | async; as players) {
+      @if (players && players.length > 0) {
+        <ul class="players-list">
+          @for (player of players; track player.id || $index) {
+            <li class="player-item">{{ player.name || player }}</li>
+          }
+        </ul>
+      } @else {
+        <div class="no-data">No players found.</div>
+      }
     } @else {
-      <div>No players found. </div>
+      <div class="no-data">No data loaded yet.</div>
     }
-  } @else {
-    <div>No data loaded yet.</div>
-  }
+  </div>
 </div>
