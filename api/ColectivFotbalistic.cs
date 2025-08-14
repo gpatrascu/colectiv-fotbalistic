@@ -34,4 +34,28 @@ public class ColectivFotbalistic(ILogger<ColectivFotbalistic> logger)
 
         return response;
     }
+
+    [Function("GetRoles")]
+    public IActionResult GetRoles(
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = "GetRoles")] HttpRequest req)
+    {
+        logger.LogInformation("GetRoles function processed a request.");
+
+        // Get the client principal from the request headers
+        var clientPrincipal = req.Headers["x-ms-client-principal"];
+
+        if (string.IsNullOrEmpty(clientPrincipal))
+        {
+            // User is not authenticated
+            return new OkObjectResult(new { roles = new string[] { } });
+        }
+
+        // For now, assign a default role to all authenticated users
+        // You can customize this logic based on your requirements
+        var roles = new[] { "authenticated" };
+
+        logger.LogInformation($"Returning roles: {string.Join(", ", roles)}");
+
+        return new OkObjectResult(new { roles });
+    }
 }
