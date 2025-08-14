@@ -18,24 +18,6 @@
       ]
     },
     {
-      "route": ".auth/providers",
-      "allowedRoles": [
-        "anonymous"
-      ]
-    },
-    {
-      "route": "/.auth/login/facebook",
-      "allowedRoles": [
-        "anonymous"
-      ]
-    },
-    {
-      "route": "/.auth/logout",
-      "allowedRoles": [
-        "anonymous"
-      ]
-    },
-    {
       "route": "/.auth/*",
       "allowedRoles": [
         "anonymous"
