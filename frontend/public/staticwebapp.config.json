@@ -10,14 +10,6 @@
       "/favicon.ico"
     ]
   },
-  "routes": [
-    {
-      "route": "/api/*",
-      "allowedRoles": [
-        "anonymous"
-      ]
-    }
-  ],
   "responseOverrides": {
     "401": {
       "redirect": "/login",
